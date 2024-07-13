@@ -1,128 +1,66 @@
 # Handwritten Digit Recognition using Machine Learning and Deep Learning
 
+## Overview
+This project is focused on recognizing handwritten digits using various machine learning and deep learning algorithms. The project includes implementations of K Nearest Neighbors (KNN), Support Vector Machine (SVM), Random Forest Classifier (RFC), and Convolutional Neural Networks (CNN).
 
-# Requirements
+## Requirements
+- Python 3.5+
+- Scikit-Learn (latest version)
+- Numpy (+ mkl for Windows)
+- Matplotlib
 
-* Python 3.5 +
-* Scikit-Learn (latest version)
-* Numpy (+ mkl for Windows)
-* Matplotlib
+## Dataset Preparation
+1. Download the MNIST dataset files:
+   ```sh
+   curl -O http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+   curl -O http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
+   curl -O http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
+   curl -O http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
+   ```
+   Alternatively, download and unzip the dataset from [here](https://github.com/anujdutt9/Handwritten-Digit-Recognition-using-Deep-Learning/blob/master/dataset.zip) and place the files in the respective folders.
 
-# Usage
+2. Place the dataset files in the `MNIST_Dataset_Loader/dataset` directory under each algorithm folder (KNN, SVM, RFC).
 
-**1.** Download the four MNIST dataset files from this link:
+## Running the Models
+3. Navigate to the desired algorithm directory and run the corresponding Python script:
+   ```sh
+   cd 1. K Nearest Neighbors/
+   python knn.py
+   # or
+   python3 knn.py
+   ```
+   This will log all print statements into the `summary.log` file. To print outputs to the command prompt, comment out lines 16, 17, 18, 106, and 107 in the script.
 
-```
-curl -O http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
-curl -O http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
-curl -O http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
-curl -O http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
-```
+4. To run the CNN code, navigate to the `CNN_Keras` directory and run:
+   ```sh
+   python CNN_MNIST.py
+   # or
+   python3 CNN_MNIST.py
+   ```
 
-**Alternatively, you can download the [dataset from here](https://github.com/anujdutt9/Handwritten-Digit-Recognition-using-Deep-Learning/blob/master/dataset.zip), unzip the files and place them in the respected folders.**
+5. To save the CNN model weights after training:
+   ```sh
+   python CNN_MNIST.py --save_model 1 --save_weights cnn_weights.hdf5
+   # or
+   python3 CNN_MNIST.py --save_model 1 --save_weights cnn_weights.hdf5
+   ```
 
-**2.** Unzip and place the files in the dataset folder inside the MNIST_Dataset_Loader folder under each ML Algorithm folder i.e :
+6. To load the saved model weights and avoid retraining:
+   ```sh
+   python CNN_MNIST.py --load_model 1 --save_weights cnn_weights.hdf5
+   # or
+   python3 CNN_MNIST.py --load_model 1 --save_weights cnn_weights.hdf5
+   ```
 
-```
-KNN
-|_ MNIST_Dataset_Loader
-   |_ dataset
-      |_ train-images-idx3-ubyte
-      |_ train-labels-idx1-ubyte
-      |_ t10k-images-idx3-ubyte
-      |_ t10k-labels-idx1-ubyte
-```
+## Results
+### Accuracy using Machine Learning Algorithms:
+- **K Nearest Neighbors:** 96.67%
+- **Support Vector Machine:** 97.91%
+- **Random Forest Classifier:** 96.82%
 
-Do this for SVM and RFC folders and you should be good to go.
+### Accuracy using Deep Neural Networks:
+- **Three Layer Convolutional Neural Network using Tensorflow:** 99.70%
+- **Three Layer Convolutional Neural Network using Keras and Theano:** 98.75%
 
-**3.** To run the code, navigate to one of the directories for which you want to run the code using command prompt:
-
-```
-cd 1. K Nearest Neighbors/
-```
-
-and then run the file "knn.py" as follows:
-
-```
-python knn.py
-```
-
-or 
-
-```
-python3 knn.py
-```
-
-This will run the code and all the print statements will be logged into the "summary.log" file.
-
-**NOTE: If you want to see the output to print on the Command prompt, just comment out line 16, 17, 18, 106 and 107 and hence you will get all the prints on the screen.**
-
-Alternatively, you can also use PyCharm to run the code and run the ".py" file in there.
-
-Repeat the steps for SVM and RFC code.
-
-**4.** To run the CNN code, you don't need to provide in the MNIST dataset as it'll be downloaded automatically.
-
-Just run the file as :
-
-```
-python CNN_MNIST.py
-```
-
-or
-
-```
-python3 CNN_MNIST.py
-```
-
-and it should run fine. 
-
-**5.** If you want to save the CNN model weights after training, run the code with the following arguments:
-
-```
-python CNN_MNIST.py --save_model 1 --save_weights cnn_weights.hdf5
-```
-
-or 
-
-```
-python3 CNN_MNIST.py --save_model 1 --save_weights cnn_weights.hdf5
-```
-
-and it should save the model weights in the same directory.
-
-**6.** To load the saved model weights and avoid the training time again, use the following command:
-
-```
-python CNN_MNIST.py --load_model 1 --save_weights cnn_weights.hdf5
-```
-
-or
-
-```
-python3 CNN_MNIST.py --load_model 1 --save_weights cnn_weights.hdf5
-```
-
-and it should load the model and show the Outputs.
-
-## Accuracy using Machine Learning Algorithms:
-
-i)	 K Nearest Neighbors: 96.67%
-
-ii)	 SVM:	97.91%
-
-iii) Random Forest Classifier:	96.82%
-
-
-## Accuracy using Deep Neural Networks:
-
-i)	Three Layer Convolutional Neural Network using Tensorflow:	99.70%
-
-ii)	Three Layer Convolutional Neural Network using Keras and Theano: 98.75%
-
-
-```
-
-## Test Images Classification Output:
-
-![Output a1](Outputs/output.png "Output a1")       
+## Example Output
+![Test Image Classification Output](Outputs/output.png)
